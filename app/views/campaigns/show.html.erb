@@ -1,0 +1,49 @@
+<p class="mt-2 m-3 ">
+  <%= link_to 'Volver', campaigns_path, class: "py-2 px-4 bg-gray-500 text-white rounded-md hover:bg-gray-700" %>
+</p>
+
+<div class="flex">
+  <div class="w-1/2">
+    <section class=" dark:bg-gray-800 flex justify-center items-center mt-20">
+        <div class="w-full max-w-md bg-white rounded-lg shadow-lg dark:border dark:border-gray-700 dark:bg-gray-800">
+            <div class="p-6 space-y-4">
+            <div class="space-y-4">
+                <div>
+                <h1 class="text-2xl font-semibold"><%= @campaign.name %></h1>
+                </div>
+                <div>
+                <p class="text-gray-600 dark:text-gray-400">Total Trabajadores: <%= @campaign.totalworkers %></p>
+                </div>
+                <div>
+                <p class="text-gray-600 dark:text-gray-400">Estado: <%= @campaign.state %></p>
+                </div>
+                <div>
+                <p class="text-gray-600 dark:text-gray-400">Profesión: <%= @campaign.start %></p>
+                </div>
+                <div>
+                <p class="text-gray-600 dark:text-gray-400">Otro dato: <%= @campaign.finish %></p>
+                </div>
+                <div>
+                    <%= link_to 'Eliminar', campaign_path(@campaign), class: "mt-4 py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-800", method: :delete, data: { turbo_confirm:'¿Seguro que quieres eliminar?',turbo_method: 'delete' } %>
+                    <%= link_to 'Editar', edit_campaign_path(@campaign), class: "py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-700" %>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+  </div>
+  <div class="w-1/2 mt-20">
+  <h1 class="text-2xl font-bold mb-4">Añadir Trabajador a campaña</h1>
+
+  <%= form_for @campaign, html: { class: 'mt-4' } do |f| %>
+    <div class="mb-4">
+      <%= f.label :id, 'Seleccionar Trabajador', class: 'block text-sm font-medium text-gray-600' %>
+      <%= f.collection_select(:id, Worker.all, :id, :fullname, { include_blank: 'Seleccionar Trabajador' }, { class: 'block mt-1 p-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500' }) %>
+    </div>
+    
+    <div class="mt-4">
+      <%= f.submit "Añadir Trabajador", class: 'px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600' %>
+    </div>
+  <% end %>
+  </div>
+</div>

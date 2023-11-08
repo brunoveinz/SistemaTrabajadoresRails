@@ -1,0 +1,39 @@
+<h1 class="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white mt-5">
+ Postular
+</h1>
+
+
+<section class="bg-gray-50 dark:bg-gray-900 flex items-center justify-center mt-20">
+  <div class="w-full max-w-md bg-white rounded-lg shadow-lg dark:border dark:bg-gray-800 dark:border-gray-700">
+    <div class="p-6 space-y-4">
+<%= form_with(model: @candidate, url: candidates_path, method: "post") do |f| %>
+  <%= f.fields_for :candidate do |candidate_form| %>
+    <div class="space-y-4">
+      <div>
+        <%= candidate_form.label :name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= candidate_form.text_field :name, autofocus: true, autocomplete: "email", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "Nombre Completo", required: true %>
+      </div>
+      <div>
+        <%= candidate_form.label :position, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= candidate_form.text_field :position, autocomplete: "current-password", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "Profesion", required: true %>
+      </div>
+      <div>
+        <%= candidate_form.label :age, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= candidate_form.number_field :age, autocomplete: "current-password", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "Edad", required: true %>
+      </div>
+      <div>
+        <%= candidate_form.label :pdf, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= candidate_form.file_field :pdf, autocomplete: "current-password", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "dd/mm/aa", required: true %>
+      </div>
+
+      <div class="text-center">
+        <%= candidate_form.submit "Enviar Postulación", class: "w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+<h1 class="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white mt-20">Campañas</h1>
+<div class="text-center">
+  <%= link_to "Crear Campaña", new_campaign_path, class: "m-3 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 inline-block" %>
+</div>
+
+<div class="mx-auto max-w-screen-lg mt-20">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Nombre Campaña
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Total Trabajadores
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Fecha Inicio
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Fecha termino
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Estado
+                </th>
+               <th scope="col" class="px-6 py-3">
+                    Acciones
+               </th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @campaigns.each do |campaign| %>
+            <tr class="bg-white dark:bg-gray-800">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <%= campaign.name%>
+            </th>
+            <td class="px-6 py-4">
+                <%= campaign.totalworkers%>
+            </td>
+            <td class="px-6 py-4">
+                <%= campaign.start%>
+            </td>
+            <td class="px-6 py-4">
+                <%= campaign.finish%>
+            </td>
+            <td class="px-6 py-4">
+                <%= campaign.state%>
+            </td>
+            <td class="px-6 py-4">
+                <%= link_to "ver", campaign_path(campaign), class: "w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" %>
+            </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
+
+<br>
+

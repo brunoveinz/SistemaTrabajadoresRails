@@ -1,0 +1,3 @@
+class Worker < ApplicationRecord
+
+end

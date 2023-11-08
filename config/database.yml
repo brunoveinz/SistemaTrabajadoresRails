@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: maestranza_development
+  username: postgres
+  password: 123
+  host: localhost
+
+test:
+  <<: *default
+  database: maestranza_test
+  username: postgres
+  password: 123
+  host: localhost
+
+production:
+  <<: *default
+  database: maestranza_production
+  username: maestranza
+  password: <%= ENV["MAESTRANZA_DATABASE_PASSWORD"] %>
